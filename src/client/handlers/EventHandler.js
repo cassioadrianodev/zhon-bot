@@ -1,4 +1,5 @@
-const { Handler, EventListener, FileUtils } = require("../../");
+const { Handler } = require("../../");
+const { lstatSync, readdirSync } = require('fs')
 
 module.exports = class Event extends Handler {
     constructor(client) {
@@ -9,28 +10,22 @@ module.exports = class Event extends Handler {
         return this.handleEvents()
     }
 
-    handleEvents() {
-        return FileUtils.requireDirectory(
-            'src/app/events',
-            this.validateEvent.bind(this)
-        ).then(() => true)
-    }
+    handleEvents(dir = 'src/app/events') {
+        readdirSync(dir)
+            .forEach(file => {
+                console.log(file)
+                const filePath = `${dir}/${file}`
 
-    validateEvent({ required: NewEvent }) {
-        if (NewEvent.prototype instanceof EventListener) {
-            const listener = new NewEvent(this.client)
-            listener.events.forEach(event => {
-                const hasFunction = listener.realEvents[event]
-                if (hasFunction) {
-                    this.client.on(event, (...args) =>
-                        listener[`on${event.capitalize()}`](...args)
-                    )
-                    console.log('[Events] Loaded events with successfully.')
+                try {
+                    if (file.endsWith('.js')) {
+                        const Listener = require(filePath)
+                        return this.client.on(file.replace(/.js/g, ''), Listener)
+                    } else if (lstatSync(filePath).isDirectory()) {
+                        return this.handleEvents()
+                    }
+                } catch (e) {
+                    console.error(e)
                 }
             })
-        } else {
-            console.log('[Events] Not a Event!')
-        }
-        return true
     }
 }

@@ -9,7 +9,6 @@ module.exports = class Zhon extends Client {
 
         this.commands = []
     }
-
     /**
      * @function
      * Built for load & register all structures of bot.
@@ -19,11 +18,11 @@ module.exports = class Zhon extends Client {
             if (Handlers[name].prototype instanceof Handler) {
                 const handle = new Handlers[name](this)
                 let s = false
-                 try {
+                try {
                     s = await handle.build()
-                 } catch (e) {
+                } catch (e) {
                     console.error(e)
-                 } finally {
+                } finally {
                     if (!s && handle.critical) process.exit(1)
                 }
             }
