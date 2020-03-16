@@ -7,13 +7,13 @@ module.exports = class evalCommand extends Command {
             name: 'eval',
             aliases: ['ex', 'execute'],
             category: 'developer',
-            devOnly: true
+            utils: { devOnly: true }
         }, client)
     }
 
     async run({ channel, message }, args) {
         try {
-            if (!args[0]) return channel.send(new ZhonEmbed().setDescription(`Você deve digitar algo.`))
+            if (!args[0]) return channel.send(new ZhonEmbed().setColor(process.env.ERROR_COLOR).setDescription(('❗ Você não escreveu nada, assim não é possível retornar um resultado.')))
             const evaled = await eval(args.join(' ').replace(/(^`{3}(\w+)?|`{3}$)/g, ''))
             const cleanEvaled = this.clean(util.inspect(evaled, { depth: 0 }))
             await channel.send(cleanEvaled, { code: 'js' })

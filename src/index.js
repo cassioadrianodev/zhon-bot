@@ -10,6 +10,7 @@ module.exports = {
     CommandStructures,
     Command: CommandStructures.Command,
     CommandContext: CommandStructures.CommandContext,
+    CommandUtils: CommandStructures.CommandUtils,
 
     /** Utils */
     FileUtils: require('./client/utils/FileUtils'),
