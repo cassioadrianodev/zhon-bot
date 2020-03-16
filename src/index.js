@@ -5,6 +5,7 @@ module.exports = {
     Handler: require('./structures/Handler'),
     Wrapper: require('./structures/Wrapper'),
     ZhonEmbed: require('./structures/ZhonEmbed'),
+    Controller: require('./structures/Controller'),
 
     /** Structures Command */
     CommandStructures,

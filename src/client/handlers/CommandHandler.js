@@ -31,9 +31,7 @@ module.exports = class Command extends Handler {
 
                         return this.commands.set(commandName, command)
                     } else if (lstatSync(filePath).isDirectory()) {
-                        if (failed > success) console.log(`[Commands] ${failed} commands were not loaded successfully. And ${success} were loaded successfully.`)
-                        else console.log(`[Commands] ${success} commands were loaded successfully. And ${failed} were not loaded successfully.`)
-                        this.handleCommands(filePath)
+                        return this.handleCommands(filePath)
                     }
                 } catch (e) {
                     failed++

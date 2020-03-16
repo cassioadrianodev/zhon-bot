@@ -33,9 +33,6 @@ module.exports = class APIs extends Handler {
                         const apiName = file.replace(/.js/g, '').toLowerCase()
                         const api = new API(apiName)
 
-                        if (failed > success) console.log(`[APIs] ${failed} APIs were not loaded successfully. And ${success} were loaded successfully.`)
-                        else console.log(`[APIs] ${success} APIs were loaded successfully. And ${failed} were not loaded successfully.`)
-                        
                         return await this.addAPI(api)
                     } else if (lstatSync(filePath).isDirectory()) {
                         return this.handleAPIs(filePath)
