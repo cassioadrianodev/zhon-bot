@@ -3,6 +3,7 @@ const CommandStructures = require('./structures/command')
 module.exports = {
     /** Structures */
     Handler: require('./structures/Handler'),
+    Wrapper: require('./structures/Wrapper'),
     ZhonEmbed: require('./structures/ZhonEmbed'),
 
     /** Structures Command */

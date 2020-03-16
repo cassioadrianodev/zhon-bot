@@ -1,5 +1,6 @@
 module.exports = {
     DatabaseHandler: require('./DatabaseHandler'),
     CommandHandler: require('./CommandHandler'),
-    EventHandler: require('./EventHandler')
+    EventHandler: require('./EventHandler'),
+    APIsHandler: require('./APIsHandler')
 }

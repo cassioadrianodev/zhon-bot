@@ -2,7 +2,7 @@
   "name": "zhon-bot",
   "version": "1.0.0",
   "description": "Zhon bot",
-  "main": "index.js",
+  "main": "index.ts",
   "repository": "https://github.com/RadioActiveTec/zhon-bot.git",
   "author": "Cássio Adriano <salaoautoestima13@gmail.com>",
   "license": "MIT",
