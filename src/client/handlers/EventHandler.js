@@ -10,18 +10,19 @@ module.exports = class Event extends Handler {
         return this.handleEvents()
     }
 
-    handleEvents(dir = 'src/app/events') {
+    handleEvents(dir = 'C:/Users/PATRICIA/Desktop/Jobs/Github/zhon-bot/src/app/events') {
         readdirSync(dir)
             .forEach(file => {
-                console.log(file)
                 const filePath = `${dir}/${file}`
 
                 try {
                     if (file.endsWith('.js')) {
                         const Listener = require(filePath)
-                        return this.client.on(file.replace(/.js/g, ''), Listener)
+                        const listenerName = file.replace(/.js/g, '')
+
+                        this.client.on(listenerName, Listener)
                     } else if (lstatSync(filePath).isDirectory()) {
-                        return this.handleEvents()
+                        return this.handleEvents(filePath)
                     }
                 } catch (e) {
                     console.error(e)

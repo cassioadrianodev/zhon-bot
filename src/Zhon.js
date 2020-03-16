@@ -1,13 +1,25 @@
 const { Client } = require('discord.js')
 
-const { Handler } = require('./')
+const { Handler, Command } = require('./')
 const Handlers = require('./client/handlers')
 
 module.exports = class Zhon extends Client {
     constructor() {
         super()
+    }
 
-        this.commands = []
+    /**
+     * @function
+     * Built for load commands.
+     * @param {Command} command Command
+     * @param {CommandContext} context Command Context
+     * @param {String<Array>} args Arguments
+     */
+    runCommand(command, context, args) {
+        return command._run(
+            context,
+            args
+        )
     }
     /**
      * @function
