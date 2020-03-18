@@ -1,6 +1,6 @@
 const { Controller } = require("../..");
 
-module.exports = class Guild extends Controller {
+module.exports = class GuildController extends Controller {
     constructor (client) {
         super ({
             name: 'guildController'

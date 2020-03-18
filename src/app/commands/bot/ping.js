@@ -1,11 +1,11 @@
 const { Command } = require("../../..");
 
-module.exports = class pingCommand extends Command {
+module.exports = class Ping extends Command {
     constructor(client) {
         super({
             name: 'ping',
             aliases: ['pong', 'peng', 'pog', 'latencia'],
-            category: 'bot',
+            category: 'Bot',
             description: 'Ver a latência da API e do Servidor.'
         }, client)
     }

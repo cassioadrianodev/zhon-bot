@@ -3,13 +3,14 @@ const { Command, ZhonEmbed } = require("../../..");
 const moment = require('moment')
 moment.locale('pt-BR')
 
-module.exports = class helpCommand extends Command {
+module.exports = class Help extends Command {
     constructor (client) {
         super ({
             name: 'help',
             aliases: ['h', 'ajuda'],
-            category: 'bot',
-            description: 'Ver informações sobre o robô ou de um comando em especifico.'
+            category: 'Bot',
+            description: 'Ver informações sobre o robô ou de um comando em especifico.',
+            usage: '{{p}}help <comando>'
         }, client)
     }
 
@@ -38,10 +39,7 @@ module.exports = class helpCommand extends Command {
             Em breve será feito um sistema de doações, então você deve ficar ativo nas novas noticias!`)
         } else if (command) {
             embed.setTitle(command.name)
-            embed.setDescription(`${command.description || ''}
-
-            ${command.usage ? `**Modo de uso**: \`${command.usage}\`` : '**Modo de uso**: `Nenhum`'}
-            ${command.aliases ? `**Atalhos**: \`${command.aliases.join('`, `')}\`` : '**Atalhos**: `Nenhum`'}`)
+            embed.setDescription(this.help(command, prefix))
         } else {
             embed.setDescription(`❓ O comando especificado não foi encontrado.`)
         }

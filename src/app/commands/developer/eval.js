@@ -1,12 +1,13 @@
 const { Command, ZhonEmbed } = require("../../..");
 const util = require('util')
 
-module.exports = class evalCommand extends Command {
+module.exports = class Eval extends Command {
     constructor(client) {
         super({
             name: 'eval',
             aliases: ['ex', 'execute'],
             category: 'developer',
+            hidden: true,
             utils: { devOnly: true }
         }, client)
     }
