@@ -25,13 +25,13 @@ module.exports = class Commands extends Command {
                     .map(c => c.name).join('`, `')
 
                 const Size = checkCommands
-                    .filter(c => c.category).size
+                    .filter(c => c.category === category).size
 
                 embed.setAuthor(`Comandos disponíveis`, this.client.user.displayAvatarURL())
                 embed.setDescription(`**Prefixo**: \`${prefix}\` (${this.client.user} também pode ser usado como prefixo.)
-                **Use** \`${prefix}help <comando\` **para saber informações de um comando especifico**.`)
+                **Use** \`${prefix}help <comando>\` **para saber informações de um comando especifico**.`)
                 embed.setThumbnail(author.displayAvatarURL())
-                embed.addField(`${category} [**${Size}**]`, `\`${commands}\``, false)
+                embed.addField(`__${category}__ [**${Size}**]`, `\`${commands}\``, false)
             })
         return channel.send(embed)
     }

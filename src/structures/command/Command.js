@@ -50,8 +50,28 @@ module.exports = class Command {
             const embed = new ZhonEmbed()
             embed.setDescription(error.message)
             embed.setColor(process.env.ERROR_COLOR)
+            console.error(error)
             return channel.send(embed)
         }
         return console.error(error)
+    }
+
+    help(command, prefix) {
+       const has = Boolean(command.usage && command.description && command.aliases)
+       let messages = []
+
+        if (has) {
+            messages = [
+                command.description,
+                '',
+                `**Modo de uso**: \`${command.usage.replace('{{p}}', prefix)}\``,
+                `**Abreviações**: \`${command.aliases.join('`, `')}\``
+            ].join('\n')
+        } else {
+            messages = [
+                `O comando não possui nenhum tipo de informação.`
+            ]
+        }
+        return messages
     }
 }
