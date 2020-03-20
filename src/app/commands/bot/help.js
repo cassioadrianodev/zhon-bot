@@ -38,8 +38,17 @@ module.exports = class Help extends Command {
             
             Em breve será feito um sistema de doações, então você deve ficar ativo nas novas noticias!`)
         } else if (command) {
-            embed.setTitle(command.name)
-            embed.setDescription(this.help(command, prefix))
+            const description = [
+                command.description,
+                command.usage ? `\n**Modo de uso**: \`${command.usage.replace('{{p}}', prefix)}\`` : ''
+            ]
+
+            if (command.aliases && command.aliases.length > 0) description.push(`**Abreviações**: \`${command.aliases.join('`, `')}\``)
+            if (command.subcommands && command.subcommands.length > 0) description.push(`**Sub-comandos**: \`${command.subcommands.join('`, `')}\``)
+            if (command.hidden) description.push(`**Oculto**: \`Sim\``)
+
+            embed.setTitle(command.constructor.name)
+            embed.setDescription(description.join('\n'))
         } else {
             embed.setDescription(`❓ O comando especificado não foi encontrado.`)
         }

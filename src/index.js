@@ -15,4 +15,7 @@ module.exports = {
 
     /** Utils */
     FileUtils: require('./client/utils/FileUtils'),
+
+    /** Client */
+    LavalinkManager: require('./client/lavalink/LavalinkManager')
 }

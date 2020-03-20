@@ -1,4 +1,4 @@
-const { Client } = require('discord.js')
+const { Client, Collection } = require('discord.js')
 
 const { Handler, Command } = require('./')
 const Handlers = require('./client/handlers')
@@ -6,6 +6,10 @@ const Handlers = require('./client/handlers')
 module.exports = class Zhon extends Client {
     constructor() {
         super()
+
+        this.musicManager = null
+        this.calls = new Collection()
+        this.queue = new Collection()
     }
 
     /**

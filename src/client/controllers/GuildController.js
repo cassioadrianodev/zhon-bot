@@ -30,4 +30,9 @@ module.exports = class GuildController extends Controller {
             }
         })
     }
+
+    async getPrefix(_guild) {
+        const { prefix } = await this._guilds.findOne(_guild)
+        return prefix
+    }
 }
