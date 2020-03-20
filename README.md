@@ -21,12 +21,27 @@
 
 Zhon has 2 commands in total, to find out more just go down the page.
 
-### Read the commands
+### Bot Commands
 
 Command|Description|Usage
 -|-|-
-**`zh.help`**|Get information about the bot.|Unknown
-**`zh.ping`**|Displays the current bot latency.|Unknown
+**`z-help`**|Get information about the bot.|**`z-help <command-name>`**
+**`z-ping`**|Displays the current bot latency.|Unknown
+**`z-commands`**|List of commands from robot.|Unknown
+**`z-support`**|Support Discord Invite.|Unknown
+**`z-team`**|List of members from Team.|Unknown
+
+### Economy Commands
+
+Command|Description|Usage
+-|-|-
+**`z-money`**|View your money or that of another user|**`z-money <user>`**
+
+### Music Commands
+
+Command|Description|Usage
+-|-|-
+**`z-play`**|Listen to your favorite music|**`z-play <url/name from song>`**
 
 <h2 align="center">Developers</h2>
 
